@@ -105,6 +105,7 @@ public class FlutterForegroundService extends Service {
                 break;
             case ACTION_STOP_SERVICE:
                 stopFlutterForegroundService();
+                FlutterForegroundPlugin.instance.notifyStopServiceFromNotification();
                 break;
             default:
                 break;

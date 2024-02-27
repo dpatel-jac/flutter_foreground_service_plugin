@@ -24,7 +24,7 @@ public class FlutterForegroundPlugin implements FlutterPlugin, MethodCallHandler
     public final static String START_FOREGROUND_ACTION = "com.changjoopark.flutter_foreground_plugin.action.startforeground";
     public final static String STOP_FOREGROUND_ACTION = "com.changjoopark.flutter_foreground_plugin.action.stopforeground";
 
-    private static FlutterForegroundPlugin instance;
+    public static FlutterForegroundPlugin instance;
 
     private Context context;
     private MethodChannel callbackChannel;
@@ -187,5 +187,9 @@ public class FlutterForegroundPlugin implements FlutterPlugin, MethodCallHandler
 
         handler = new Handler();
         handler.postDelayed(runnable, interval);
+    }
+
+    void notifyStopServiceFromNotification() {
+        callbackChannel.invokeMethod("onStopped", null);
     }
 }
