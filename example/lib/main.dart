@@ -59,7 +59,6 @@ void startForegroundService() async {
   await FlutterForegroundPlugin.setServiceMethodInterval(seconds: 5);
   await FlutterForegroundPlugin.setServiceMethod(globalForegroundService);
   await FlutterForegroundPlugin.startForegroundService(
-    holdWakeLock: false,
     onStarted: () {
       print("Foreground on Started");
     },
@@ -67,8 +66,9 @@ void startForegroundService() async {
       print("Foreground on Stopped");
     },
     title: "Flutter Foreground Service",
-    content: "This is Content",
+    content: "Tap to return to call",
     iconName: "ic_stat_hot_tub",
+    chronometer: true,
   );
 }
 

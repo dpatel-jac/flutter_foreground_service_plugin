@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/caller_image"
+        android:src="@drawable/ic_default_avatar"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:importantForAccessibility="no"
+        android:scaleType="centerCrop" />
+
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginStart="@dimen/all_padding"
+        android:layout_marginEnd="@dimen/all_padding"
+        android:text="@string/title"
+        android:maxLines="1"
+        android:textSize="@dimen/size_text_name"
+        android:textStyle="bold" />
+
+<!--    <Button-->
+<!--        android:id="@+id/hang_up_button"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:drawableLeft="@drawable/ic_launcher_background"-->
+<!--        android:text="Hang up" />-->
+
+    <LinearLayout
+        android:id="@+id/llDecline"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/size_button"
+        android:background="@drawable/rounded_button_decline"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="@dimen/icon_size"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/base_margin_half"
+            android:src="@drawable/hang_up"
+            android:tint="@android:color/white" />
+
+        <TextView
+            android:id="@+id/tvDecline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/base_margin_half"
+            android:layout_marginLeft="@dimen/base_margin_half"
+            android:gravity="center"
+            android:text="@string/text_hangup"
+            android:textAllCaps="false"
+            android:textSize="@dimen/size_text_action"
+            android:textColor="@color/action_text" />
+
+    </LinearLayout>
+
+</LinearLayout>

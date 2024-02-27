@@ -10,6 +10,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
+import android.widget.RemoteViews;
 
 import androidx.core.app.NotificationCompat;
 
@@ -48,21 +49,45 @@ public class FlutterForegroundService extends Service {
                     NotificationChannel channel = new NotificationChannel(NOTIFICATION_CHANNEL_ID,
                             "flutter_foreground_service_channel",
                             NotificationManager.IMPORTANCE_DEFAULT);
+                    channel.setDescription("Channel for Sticky Notification");
 
                     ((NotificationManager) getSystemService(NOTIFICATION_SERVICE))
                             .createNotificationChannel(channel);
                 }
+
+                Intent stopSelf = new Intent(this, FlutterForegroundService.class);
+                stopSelf.setAction(ACTION_STOP_SERVICE);
+
+                PendingIntent pStopSelf = PendingIntent
+                        .getService(this, 0, stopSelf, PendingIntent.FLAG_CANCEL_CURRENT);
+
+                String userImage = bundle.getString("userlogo", "");
+
+                RemoteViews customLayout = new RemoteViews(getApplicationContext().getPackageName(), R.layout.custom_notification_layout);
+                customLayout.setOnClickPendingIntent(R.id.llDecline, pStopSelf);
+                customLayout.setTextViewText(R.id.title, bundle.getString("title"));
+                customLayout.setTextViewText(R.id.content, bundle.getString("content", ""));
+                if (userImage.isEmpty()) {
+
+                }
+
+                RemoteViews customSmallLayout = new RemoteViews(getApplicationContext().getPackageName(), R.layout.custom_notification_small_layout);
+                customSmallLayout.setOnClickPendingIntent(R.id.llDecline, pStopSelf);
+                customSmallLayout.setTextViewText(R.id.title, bundle.getString("title"));
+
                 NotificationCompat.Builder builder = new NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_ID)
                         .setSmallIcon(getNotificationIcon(bundle.getString("icon")))
                         .setColor(bundle.getInt("color"))
-                        .setContentTitle(bundle.getString("title"))
-                        .setContentText(bundle.getString("content"))
                         .setCategory(NotificationCompat.CATEGORY_SERVICE)
                         .setContentIntent(pendingIntent)
                         .setUsesChronometer(bundle.getBoolean("chronometer"))
-                        .setOngoing(true);
+                        .setOngoing(true)
+                        .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                        .setStyle(new NotificationCompat.DecoratedCustomViewStyle())
+                        .setCustomContentView(customSmallLayout)
+                        .setCustomBigContentView(customLayout);
 
-                if (bundle.getBoolean("stop_action")) {
+                /*if (bundle.getBoolean("stop_action")) {
                     Intent stopSelf = new Intent(this, FlutterForegroundService.class);
                     stopSelf.setAction(ACTION_STOP_SERVICE);
 
@@ -71,11 +96,7 @@ public class FlutterForegroundService extends Service {
                     builder.addAction(getNotificationIcon(bundle.getString("stop_icon")),
                             bundle.getString("stop_text"),
                             pStopSelf);
-                }
-
-                if (bundle.getString("subtext") != null && !bundle.getString("subtext").isEmpty()) {
-                    builder.setSubText(bundle.getString("subtext"));
-                }
+                }*/
 
                 startForeground(ONGOING_NOTIFICATION_ID, builder.build());
                 break;

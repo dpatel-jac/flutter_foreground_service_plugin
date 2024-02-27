@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="text_hangup">Hang Up</string>
+    <string name="title">Judy Baker</string>
+    <string name="content">Tap to return to call</string>
+</resources>
