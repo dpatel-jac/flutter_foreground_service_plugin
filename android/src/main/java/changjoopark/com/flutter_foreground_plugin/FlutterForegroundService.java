@@ -58,8 +58,12 @@ public class FlutterForegroundService extends Service {
                 Intent stopSelf = new Intent(this, FlutterForegroundService.class);
                 stopSelf.setAction(ACTION_STOP_SERVICE);
 
+                int falgs = PendingIntent.FLAG_CANCEL_CURRENT;
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    falgs = PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT;
+                }
                 PendingIntent pStopSelf = PendingIntent
-                        .getService(this, 0, stopSelf, PendingIntent.FLAG_CANCEL_CURRENT);
+                        .getService(this, 0, stopSelf, falgs);
 
                 String userImage = bundle.getString("userlogo", "");
 
