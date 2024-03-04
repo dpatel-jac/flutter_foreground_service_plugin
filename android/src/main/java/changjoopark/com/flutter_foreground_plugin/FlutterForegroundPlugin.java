@@ -44,9 +44,6 @@ public class FlutterForegroundPlugin implements FlutterPlugin, MethodCallHandler
     }
 
     public void onAttachedToEngine(Context applicationContext, BinaryMessenger messenger) {
-        if (instance == null) {
-            instance = this;
-        }
         System.out.println("onAttachedToEngine called!!");
         this.messenger = messenger;
         this.context = applicationContext;
@@ -72,6 +69,9 @@ public class FlutterForegroundPlugin implements FlutterPlugin, MethodCallHandler
 
     @Override
     public void onMethodCall(MethodCall call, Result result) {
+        if (instance == null) {
+            instance = this;
+        }
         switch (call.method) {
             case "startForegroundService":
                 final String icon = call.argument("icon");
