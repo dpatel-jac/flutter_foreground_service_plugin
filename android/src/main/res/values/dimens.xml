@@ -2,14 +2,14 @@
 <resources>
     <bool name="isTablet">false</bool>
     <dimen name="size_avatar">60dp</dimen>
+    <dimen name="size_avatar2">50dp</dimen>
 
-    <dimen name="base_margin_half">10dp</dimen>
     <dimen name="all_padding">10dp</dimen>
+    <dimen name="all_padding2">8dp</dimen>
 
     <dimen name="size_button">40dp</dimen>
     <dimen name="icon_size">24dp</dimen>
     <dimen name="size_button_x2">20dp</dimen>
-    <dimen name="size_button_x2_5">150dp</dimen>
 
     <dimen name="size_text_name">20sp</dimen>
     <dimen name="size_text_name1">16sp</dimen>
