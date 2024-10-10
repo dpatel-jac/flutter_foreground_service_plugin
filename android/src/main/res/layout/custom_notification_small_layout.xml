@@ -46,7 +46,7 @@
 
             <ImageView
                 android:layout_width="@dimen/icon_size"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/icon_size"
                 android:layout_marginLeft="@dimen/all_padding2"
                 android:src="@drawable/hang_up"
                 android:tint="@android:color/white" />
