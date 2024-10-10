@@ -16,8 +16,8 @@
             android:src="@drawable/ic_default_avatar"
             android:importantForAccessibility="no"
             android:scaleType="centerCrop"
-            android:layout_width="@dimen/size_avatar"
-            android:layout_height="@dimen/size_avatar" />
+            android:layout_width="@dimen/avatar_size1"
+            android:layout_height="@dimen/avatar_size1" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -31,7 +31,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/title"
                 android:maxLines="1"
-                android:textSize="@dimen/size_text_name"
+                android:textSize="@dimen/size_text_20"
                 android:textStyle="bold" />
 
             <TextView
@@ -40,7 +40,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/content"
                 android:maxLines="1"
-                android:textSize="@dimen/size_text_action" />
+                android:textSize="@dimen/size_text_14" />
 
             <LinearLayout
                 android:id="@+id/llDecline"
@@ -69,7 +69,7 @@
                     android:gravity="center"
                     android:text="@string/text_hangup"
                     android:textAllCaps="false"
-                    android:textSize="@dimen/size_text_action"
+                    android:textSize="@dimen/size_text_14"
                     android:textColor="@color/action_text" />
 
             </LinearLayout>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="size_avatar">60dp</dimen>
-    <dimen name="size_avatar2">50dp</dimen>
+    <dimen name="avatar_size1">60dp</dimen>
+    <dimen name="avatar_size2">50dp</dimen>
 
     <dimen name="all_padding">10dp</dimen>
     <dimen name="all_padding2">8dp</dimen>
@@ -9,7 +9,7 @@
     <dimen name="icon_size">24dp</dimen>
     <dimen name="size_button_x2">120dp</dimen>
 
-    <dimen name="size_text_name">20sp</dimen>
-    <dimen name="size_text_action">14sp</dimen>
+    <dimen name="size_text_20">20sp</dimen>
+    <dimen name="size_text_14">14sp</dimen>
 
 </resources>
