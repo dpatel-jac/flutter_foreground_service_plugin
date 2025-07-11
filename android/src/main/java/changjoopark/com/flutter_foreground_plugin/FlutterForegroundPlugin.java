@@ -13,7 +13,6 @@ import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
 import io.flutter.plugin.common.MethodChannel.Result;
-import io.flutter.plugin.common.PluginRegistry.Registrar;
 import io.flutter.embedding.engine.plugins.activity.ActivityAware;
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding;
 
@@ -44,6 +43,11 @@ public class FlutterForegroundPlugin implements FlutterPlugin, MethodCallHandler
     }
 
     public void onAttachedToEngine(Context applicationContext, BinaryMessenger messenger) {
+        if (instance == null) {
+            instance = new FlutterForegroundPlugin();
+        }
+        instance.onAttachedToEngine(applicationContext, messenger);
+
         System.out.println("onAttachedToEngine called!!");
         this.messenger = messenger;
         this.context = applicationContext;
@@ -55,16 +59,6 @@ public class FlutterForegroundPlugin implements FlutterPlugin, MethodCallHandler
     @Override
     public void onDetachedFromEngine(FlutterPluginBinding binding) {
         System.out.println("onDetachedFromEngine called!!");
-    }
-
-    /**
-     * Plugin registration.
-     */
-    public static void registerWith(Registrar registrar) {
-        if (instance == null) {
-            instance = new FlutterForegroundPlugin();
-        }
-        instance.onAttachedToEngine(registrar.context(), registrar.messenger());
     }
 
     @Override
