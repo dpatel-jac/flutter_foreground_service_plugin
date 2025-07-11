@@ -43,10 +43,10 @@ public class FlutterForegroundPlugin implements FlutterPlugin, MethodCallHandler
     }
 
     public void onAttachedToEngine(Context applicationContext, BinaryMessenger messenger) {
-        if (instance == null) {
+        /*if (instance == null) {
             instance = new FlutterForegroundPlugin();
         }
-        instance.onAttachedToEngine(applicationContext, messenger);
+        instance.onAttachedToEngine(applicationContext, messenger);*/
 
         System.out.println("onAttachedToEngine called!!");
         this.messenger = messenger;
