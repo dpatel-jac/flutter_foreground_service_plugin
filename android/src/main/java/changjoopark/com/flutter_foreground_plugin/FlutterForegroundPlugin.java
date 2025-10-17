@@ -13,7 +13,7 @@ import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
 import io.flutter.plugin.common.MethodChannel.Result;
-import io.flutter.plugin.common.PluginRegistry.Registrar;
+//import io.flutter.plugin.common.PluginRegistry.Registrar;
 import io.flutter.embedding.engine.plugins.activity.ActivityAware;
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding;
 
@@ -60,12 +60,14 @@ public class FlutterForegroundPlugin implements FlutterPlugin, MethodCallHandler
     /**
      * Plugin registration.
      */
+    /*
     public static void registerWith(Registrar registrar) {
         if (instance == null) {
             instance = new FlutterForegroundPlugin();
         }
         instance.onAttachedToEngine(registrar.context(), registrar.messenger());
     }
+    */
 
     @Override
     public void onMethodCall(MethodCall call, Result result) {
